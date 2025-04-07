@@ -1,4 +1,4 @@
-import Category from "../models/category.js";
+import {Category} from "../db/index.js";
 import ErrorResponse from "../utils/ErrorResponse.js";
 
 class categoryController {

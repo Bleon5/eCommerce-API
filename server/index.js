@@ -1,7 +1,7 @@
 import express from "express";
 import { config } from "dotenv";
-import { Sequelize } from "sequelize";
 import categoryRouter from "./routers/categoryRouter.js";
+import productRouter from "./routers/productsRouter.js";
 import orderRouter from './routers/orderRouter.js';
 import errorHandler from "./middleware/errorHandler.js";
 
@@ -14,7 +14,12 @@ app.use(express.json());
 app.get("/", (req, res) => res.send("Hello, from the server!"));
 
 app.use("/category", categoryRouter);
+app.use('/products',productRouter);
 app.use('/orders', orderRouter);
+
+app.use('*',(req,res) => {
+    res.status(404).json({error:'Page Not Found'})
+})
 
 app.use(errorHandler);
 
