@@ -1,4 +1,4 @@
-import {Category, Product} from "../db/index.js";
+import {Category, Product} from "../models/index.js";
 import ErrorResponse from "../utils/ErrorResponse.js";
 
 export const getProducts = async(req,res,next) => {

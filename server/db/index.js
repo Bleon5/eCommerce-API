@@ -1,8 +1,8 @@
-import Product from "../models/product.js";
-import Category from "../models/category.js"
+import { Sequelize } from "sequelize";
+import { config } from "dotenv";
 
+config();
 
-Category.hasMany(Product,{foreignKey:'categoryId'});
-Product.belongsTo(Category,{foreignKey:'categoryId'});
+const DB_URL = process.env.DB_URL;
 
-export {Product,Category};
+export const sequelize = new Sequelize(DB_URL);
