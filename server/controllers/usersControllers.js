@@ -31,3 +31,24 @@ export const createUser = async(req,res,next) => {
     }
 }
 
+export const updateUser = async(req,res,next) => {
+    try {
+        const {id}=req.params;
+        const {name,email,password}=req.body;
+        await User.update({name,email,password},{where:{id}});
+        const updatedUser=await User.findByPk(id);
+        res.json(updatedUser);
+    } catch (error) {
+        next(new ErrorResponse(error.message,500));
+    }
+}
+
+export const deleteUser = async(req,res,next) => {
+    try {
+        const {id} = req.params;
+        const users= await User.destroy({where:{id}});
+        res.status(200).send('user deleted successfuly');
+    } catch (error) {
+        next(new ErrorResponse(error.message,500));
+    }
+}

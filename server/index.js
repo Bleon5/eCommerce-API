@@ -19,9 +19,9 @@ app.use('/products',productRouter);
 app.use('/orders', orderRouter);
 app.use('/users', userRouter);
 
-// app.use('*',(req,res) => {
-//     res.status(404).json({error:'Page Not Found'})
-// })
+app.use((req,res) => {
+    res.status(404).json({error:'Page Not Found'})
+})
 
 app.use(errorHandler);
 

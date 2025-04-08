@@ -1,4 +1,4 @@
-import ErrorResponses from '../utils/ErrorResponses.js';
+import ErrorResponses from '../utils/ErrorResponse.js';
 import { Order, OrderProduct, User, Product } from "../models/index.js";
 import { createOrderSchema, updateOrderSchema } from "../schemas/orderSchemas.js";
 
