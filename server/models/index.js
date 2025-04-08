@@ -1,5 +1,6 @@
+import Product from "./product.js"
+import Category from "./category.js"
 import User from "./User.js";
-import Product from "./Product.js";
 import Order from "./Order.js";
 import OrderProduct from "./OrderProduct.js";
 
@@ -28,4 +29,8 @@ OrderProduct.belongsTo(Order, { foreignKey: 'orderId' });
 Product.hasMany(OrderProduct, { foreignKey: 'productIdId', as: 'orderItems' });
 OrderProduct.belongsTo(Product, { foreignKey: 'productId' });
 
-export { User, Product, Order, OrderProduct };
+//product - category
+Category.hasMany(Product,{foreignKey:'categoryId'});
+Product.belongsTo(Category,{foreignKey:'categoryId'});
+
+export { User, Product,Category, Order, OrderProduct };

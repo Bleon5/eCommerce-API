@@ -1,0 +1,18 @@
+import { addProductSchema,updateProductSchema } from "../schemas/productSchemas.js";
+import ErrorResponse from "../utils/ErrorResponse.js";
+
+
+const validate = (schema) => {
+    return (req, res, next) => {
+      const { error } = schema.validate(req.body);
+      if (error) {
+        return next(
+          new ErrorResponse(`Validation Error: ${error.details[0].message}`, 400)
+        );
+      }
+      next();
+    };
+  };
+
+  export const validateAddProduct = validate(addProductSchema);
+  export const validateUpdateProduct = validate(updateProductSchema);

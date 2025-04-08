@@ -1,11 +1,6 @@
-import { Sequelize,DataTypes } from "sequelize";
-import { config } from "dotenv";
+import { DataTypes } from "sequelize";
+import { sequelize } from "../db/index.js";
 
-config();
-
-const DB_URL=process.env.DB_URL;
-
-const sequelize= new Sequelize(DB_URL,{logging:false});
 
 const Product=sequelize.define(
     'Product',
@@ -35,6 +30,6 @@ const Product=sequelize.define(
     tableName:'product'
 });
 
-sequelize.sync({force:true});
+sequelize.sync();
 
 export default Product;
