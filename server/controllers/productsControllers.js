@@ -50,8 +50,8 @@ export const updateProduct = async(req,res,next) => {
 export const deleteProduct = async(req,res,next) => {
     try {
         const {id} = req.params;
-        const products= await Product.destroy({where:{id}});
-        res.status(200).send('product deleted successfully');
+        await Product.destroy({where:{id}});
+        res.status(200).send('product deleted successfuly');
     } catch (error) {
         next(new ErrorResponse(error.message,500));
     }
